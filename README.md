@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# React + JavaScript + Redux Toolkit + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a **React** application built with **JavaScript** and **Redux Toolkit** for state management. Follow the steps below to set up, run, and understand the project structure.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Project Setup**
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 1. **Clone the Repository**
+```bash
+git clone <repository_url>
+cd <project_directory>
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### 2. **Install Dependencies**
+```bash
+npm install
 ```
+
+### 3. **Environment Configuration**
+Create a `.env` file in the root directory if needed:
+```bash
+VITE_API_URL=<your_api_url>
+VITE_LIMIT=<your_limit_for_fetching_pokemon_list>
+```
+
+### 4. **Run the Application Locally**
+
+**Development Mode:**
+```bash
+npm run dev
+```
+
+**Production Build:**
+```bash
+npm run build
+```
+
+---
+
+## **Project Structure**
+```plaintext
+src/
+    ├── components/       # Reusable components
+    ├── pages/            # Page components
+    ├── store/            # Redux store configuration
+        ├── slices/       # Redux toolkit slices to update state
+        ├── thunks/       # Redux thunks
+    ├── hooks/            # Custom React hooks
+    ├── App.tsx           # Main application component
+    └── main.ts           # Entry point
+
+public/                  # Static files
+node_modules/             # Node dependencies
+.env                      # Environment variables
+package.json
+```
+
+---
+
+## **Key Features & Approaches**
+
+- **React Functional Components**: Using React Hooks for cleaner and more maintainable code.
+- **Redux Toolkit**: Simplified Redux logic with `createSlice` and `createAsyncThunk`.
+- **Custom hooks**: Custom hooks to manage relevant state.
+- **API Integration**: Axios for external API calls.
+- **Environment Management**: Utilizing `.env` for sensitive configurations.
+- **Material UI Responsive UI**: Basic responsive design with material-ui.
+
+---
+
+## **Deployment Guidelines** *(Render)*
+
+- **Build Command:** `npm install; npm run build`
+- **Public Directory:** `build`
+- **Environment Variables:** Set in the platform's settings.
+---
