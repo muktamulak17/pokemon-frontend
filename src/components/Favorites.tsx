@@ -10,11 +10,11 @@ import {
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Toast } from "./Toast";
-import { updateFavorite, RootState } from "../store/store";
+import { updateFavorite, RootState, AppDispatch } from "../store/store";
 import { useToast } from "../hooks/useToast";
 
 export const Favorites: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { favorites } = useSelector((state: RootState) => state.favorites);
   const { username, token } = useSelector((state: RootState) => state.auth);
 
@@ -30,7 +30,7 @@ export const Favorites: React.FC = () => {
           message: "Favorite removed successfully!",
         });
       })
-      .catch((err) => {
+      .catch((err: { message: string }) => {
         setOpenToast(true);
         setToastData({
           severity: "error",
@@ -40,10 +40,10 @@ export const Favorites: React.FC = () => {
   };
 
   return (
-    <Paper sx={{ padding: 2, backgroundColor: "primar.main" }}>
+    <Paper sx={{ padding: 2, backgroundColor: "gray" }}>
       <Grid container spacing={2}>
         {favorites.map((pokemon) => (
-          <Grid xs={12} sm={6} md={4} key={pokemon.id}>
+          <Grid key={pokemon.id}>
             <Card sx={{ maxWidth: 300, backgroundColor: "secondary.main" }}>
               <CardContent>
                 <Typography variant="h6">{pokemon.name}</Typography>
