@@ -32,10 +32,14 @@ const pokemonSlice = createSlice({
   initialState,
   reducers: {
     searchPokemon: (state, action) => {
-      const filtered = state.allPokemon.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
-      state.searchedPokemon = filtered;
+      if (action.payload.length > 0) {
+        const filtered = state.allPokemon.filter((pokemon) =>
+          pokemon.name.toLowerCase().includes(action.payload.toLowerCase())
+        );
+        state.searchedPokemon = filtered;
+      } else {
+        state.searchedPokemon = [];
+      }
     },
   },
   extraReducers: (builder) => {

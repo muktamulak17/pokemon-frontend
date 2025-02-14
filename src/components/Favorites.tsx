@@ -40,23 +40,29 @@ export const Favorites: React.FC = () => {
   };
 
   return (
-    <Paper sx={{ padding: 2, backgroundColor: "gray" }}>
+    <Paper sx={{ padding: 2 }}>
       <Grid container spacing={2}>
-        {favorites.map((pokemon) => (
-          <Grid key={pokemon.id}>
-            <Card sx={{ maxWidth: 300, backgroundColor: "secondary.main" }}>
-              <CardContent>
-                <Typography variant="h6">{pokemon.name}</Typography>
-                <IconButton
-                  color="error"
-                  onClick={() => handleRemove(pokemon.name)}
-                >
-                  <FavoriteIcon />
-                </IconButton>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
+        {favorites.length > 0 ? (
+          favorites.map((pokemon) => (
+            <Grid key={pokemon.id}>
+              <Card sx={{ maxWidth: 300, backgroundColor: "secondary.main" }}>
+                <CardContent>
+                  <Typography variant="h6">{pokemon.name}</Typography>
+                  <IconButton
+                    color="error"
+                    onClick={() => handleRemove(pokemon.name)}
+                  >
+                    <FavoriteIcon />
+                  </IconButton>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))
+        ) : (
+          <Typography variant="h6" align="center">
+            Oops, there are no favorites added in your list!
+          </Typography>
+        )}
         <Toast
           message={toastData.message}
           severity={toastData.severity}

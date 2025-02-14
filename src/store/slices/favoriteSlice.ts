@@ -32,7 +32,7 @@ export const favoriteSlice = createSlice({
       })
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.favorites = action.payload.favorites;
+        state.favorites = action.payload.favorites || [];
       })
       .addCase(fetchFavorites.rejected, (state, action) => {
         state.isLoading = false;
@@ -42,7 +42,7 @@ export const favoriteSlice = createSlice({
         state.updateFavorite.isLoading = true;
       })
       .addCase(updateFavorite.fulfilled, (state, action) => {
-        state.favorites = action.payload.favorites;
+        state.favorites = action.payload.favorites || [];
         state.updateFavorite.isLoading = false;
       })
       .addCase(updateFavorite.rejected, (state, action) => {
