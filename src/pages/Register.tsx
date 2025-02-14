@@ -47,6 +47,7 @@ export const Register = () => {
           label="Name"
           name="name"
           type="text"
+          required
           value={form.name}
           onChange={handleChange}
           fullWidth
@@ -55,6 +56,7 @@ export const Register = () => {
           label="Email"
           name="username"
           type="email"
+          required
           value={form.username}
           onChange={handleChange}
           fullWidth
@@ -63,6 +65,7 @@ export const Register = () => {
           label="Password"
           name="password"
           type="password"
+          required
           value={form.password}
           onChange={handleChange}
           fullWidth

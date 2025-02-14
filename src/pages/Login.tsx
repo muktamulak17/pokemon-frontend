@@ -38,6 +38,7 @@ export const Login: React.FC = () => {
           label="Email"
           name="username"
           type="email"
+          required
           value={form.username}
           onChange={handleChange}
           fullWidth
@@ -46,6 +47,7 @@ export const Login: React.FC = () => {
           label="Password"
           name="password"
           type="password"
+          required
           value={form.password}
           onChange={handleChange}
           fullWidth
