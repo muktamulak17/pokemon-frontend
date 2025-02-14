@@ -28,7 +28,9 @@ export const fetchPokemonDetails = createAsyncThunk(
       };
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.error || "Failed to fetch pokemon details"
+        axios.isAxiosError(error)
+          ? error.response?.data?.error
+          : "Failed to fetch pokemon details"
       );
     }
   }

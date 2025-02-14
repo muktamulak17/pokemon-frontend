@@ -20,7 +20,7 @@ export const Favorites: React.FC = () => {
 
   const { toastData, setToastData, openToast, setOpenToast } = useToast();
 
-  const handleRemove = (name) => {
+  const handleRemove = (name: string) => {
     dispatch(updateFavorite({ name, username, action: "remove", token }))
       .unwrap()
       .then(() => {

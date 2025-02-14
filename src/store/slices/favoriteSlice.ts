@@ -36,7 +36,7 @@ export const favoriteSlice = createSlice({
       })
       .addCase(fetchFavorites.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload as string;
       })
       .addCase(updateFavorite.pending, (state) => {
         state.updateFavorite.isLoading = true;
@@ -47,7 +47,7 @@ export const favoriteSlice = createSlice({
       })
       .addCase(updateFavorite.rejected, (state, action) => {
         state.updateFavorite.isLoading = false;
-        state.updateFavorite.updateError = action.payload;
+        state.updateFavorite.updateError = action.payload as string;
       });
   },
 });

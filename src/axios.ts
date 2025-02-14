@@ -13,7 +13,9 @@ export const register = async (formData: {
   } catch (error) {
     return {
       data: null,
-      message: error.response.data.error || "Error in registration",
+      message: axios.isAxiosError(error)
+        ? error?.response?.data?.error
+        : "Error in registration",
     };
   }
 };

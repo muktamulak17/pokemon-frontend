@@ -2,7 +2,16 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_URL } from "../../config";
 
-export const updateFavorite = createAsyncThunk(
+export const updateFavorite = createAsyncThunk<
+  void,
+  {
+    name: string;
+    username: string | null;
+    action: "add" | "remove";
+    token: string | null;
+  },
+  { rejectValue: string }
+>(
   "pokemon/updateFavorite",
   async (
     {
@@ -27,7 +36,9 @@ export const updateFavorite = createAsyncThunk(
       return resp.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.error || "Failed to update favorite"
+        axios.isAxiosError(error)
+          ? error.response?.data?.error
+          : "Failed to update favorite"
       );
     }
   }
@@ -47,7 +58,9 @@ export const fetchFavorites = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(
-        error.response.data.error || "Error in fetching favorites"
+        axios.isAxiosError(error)
+          ? error.response?.data?.error
+          : "Error in fetching favorites"
       );
     }
   }
